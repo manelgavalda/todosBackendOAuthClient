@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/redirect', function () {
     $query = http_build_query([
         'client_id' => '1',
-        'redirect_uri' => 'http://localhost:8084/auth/callback',
+        'redirect_uri' => 'http://localhost:8087/auth/callback',
         'response_type' => 'code',
         'scope' => '',
     ]);
@@ -39,16 +39,16 @@ Route::get('/redirect', function () {
     return redirect('http://localhost:8084/oauth/authorize?'.$query);
 });
 
-Route::get('/callback', function (Request $request) {
+Route::get('/auth/callback', function (Request $request) {
     $http = new GuzzleHttp\Client;
 
-    $response = $http->post('http://your-app.com/oauth/token', [
+    $response = $http->post('http://localhost:8084/oauth/token', [
         'form_params' => [
             'grant_type' => 'authorization_code',
-            'client_id' => 'client-id',
-            'client_secret' => 'client-secret',
-            'redirect_uri' => 'http://example.com/callback',
-            'code' => $request->code,
+            'client_id' => '1',
+            'client_secret' => 'AtuhErSrAIzzktbDER2rbLvNAa1xNhxe6JoEjaIO',
+            'redirect_uri' => 'http://localhost:8087/auth/callback',
+            'code' => Request::input('code'),
         ],
     ]);
 
