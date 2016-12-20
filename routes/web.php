@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/redirect', function () {
     $query = http_build_query([
-        'client_id' => 'AtuhErSrAIzzktbDER2rbLvNAa1xNhxe6JoEjaIO',
+        'client_id' => '1',
         'redirect_uri' => 'http://localhost:8084/auth/callback',
         'response_type' => 'code',
         'scope' => '',
