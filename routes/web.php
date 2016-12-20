@@ -24,4 +24,17 @@ Route::group(['middleware' => 'auth'], function () {
     #adminlte_routes
     Route::get('tasks', 'TasksController@index')->name('tasks');
 
+
+
+});
+
+Route::get('/redirect', function () {
+    $query = http_build_query([
+        'client_id' => 'AtuhErSrAIzzktbDER2rbLvNAa1xNhxe6JoEjaIO',
+        'redirect_uri' => 'http://localhost:8084/auth/callback',
+        'response_type' => 'code',
+        'scope' => '',
+    ]);
+    //url del todosBackend.
+    return redirect('http://localhost:8084/oauth/authorize?'.$query);
 });
