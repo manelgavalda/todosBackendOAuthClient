@@ -53,5 +53,5 @@ Route::get('/auth/callback', function (Request $request) {
     ]);
 
     return json_decode((string) $response->getBody(), true);
-    //TODO: get al todosbackend tasks. Li pasem token i agafa el token del json anterior. Agafar tokens desde el headers(ja ho vam fer al github repos) on fica als headers el token que pertoca.
+    //TODO: get al todosbackend tasks. Li pasem token i agafa el token del json anterior. Agafar tokens desde el headers(ja ho vam fer al github repos) on fica als headers el token que pertoquen.
 });
