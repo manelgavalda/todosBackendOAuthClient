@@ -46,7 +46,7 @@ Route::get('/auth/callback', function (Request $request) {
         'form_params' => [
             'grant_type' => 'authorization_code',
             'client_id' => '1',
-            'client_secret' => 'AtuhErSrAIzzktbDER2rbLvNAa1xNhxe6JoEjaIO',
+            'client_secret' => 'fEzXFtvaByxTpotFZkJ9yVAzP58mxMECoEqfAfAX',
             'redirect_uri' => 'http://localhost:8087/auth/callback',
             'code' => Request::input('code'),
         ],
