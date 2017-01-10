@@ -31,23 +31,23 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/redirect', function () {
     $query = http_build_query([
         'client_id' => '1',
-        'redirect_uri' => 'http://localhost:8087/auth/callback',
+        'redirect_uri' => 'http://oauthclient.dev:8081/auth/callback',
         'response_type' => 'code',
         'scope' => '',
     ]);
     //url del todosBackend.
-    return redirect('http://localhost:8084/oauth/authorize?'.$query);
+    return redirect('http://localhost:8080/oauth/authorize?'.$query);
 });
 
 Route::get('/auth/callback', function (Request $request) {
     $http = new GuzzleHttp\Client;
 
-    $response = $http->post('http://localhost:8084/oauth/token', [
+    $response = $http->post('http://localhost:8080/oauth/token', [
         'form_params' => [
             'grant_type' => 'authorization_code',
             'client_id' => '1',
             'client_secret' => 'fEzXFtvaByxTpotFZkJ9yVAzP58mxMECoEqfAfAX',
-            'redirect_uri' => 'http://localhost:8087/auth/callback',
+            'redirect_uri' => 'http://oauthclient.dev:8081/auth/callback',
             'code' => Request::input('code'),
         ],
     ]);
