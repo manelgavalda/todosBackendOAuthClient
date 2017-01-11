@@ -6,9 +6,16 @@ namespace App\Http\Controllers;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Request;
 
+/**
+ * Class AuthCallbackController
+ * @package App\Http\Controllers
+ */
 class AuthCallbackController extends Controller
 {
 
+    /**
+     * @return mixed
+     */
     public function makeAuthCallback()
     {
         $http = new Client;
@@ -17,7 +24,7 @@ class AuthCallbackController extends Controller
             'form_params' => [
                 'grant_type' => 'authorization_code',
                 'client_id' => '1',
-                'client_secret' => 'fEzXFtvaByxTpotFZkJ9yVAzP58mxMECoEqfAfAX',
+                'client_secret' => 'mUnAkePb1AJrSfuvtXZ0H9A2uNWqDoh4eLRTMlUY',
                 'redirect_uri' => 'http://oauthclient.dev:8001/auth/callback',
                 'code' => Request::input('code'),
             ],
