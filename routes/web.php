@@ -28,22 +28,14 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 
-Route::get('/redirect', function () {
-    $query = http_build_query([
-        'client_id' => '1',
-        'redirect_uri' => 'http://oauthclient.dev:8081/auth/callback',
-        'response_type' => 'code',
-        'scope' => '',
-    ]);
-    //url del todosBackend.
-    return redirect('http://localhost:8080/oauth/authorize?'.$query);
-});
+Route::get('/redirect', 'RedirectController@redirectWithQuery')->name('redirect');
 
-Route::get('/auth/callback', function (Request $request) {
-    $http = new GuzzleHttp\Client;
+Route::get('/auth/callback', 'AuthCallbackController@makeAuthCallback')->name('AuthCallback');
 
 
 
-    return json_decode((string) $response->getBody(), true);
+
+
+    //return json_decode((string) $response->getBody(), true);
     //TODO: get al todosbackend tasks. Li pasem token i agafa el token del json anterior. Agafar tokens desde el headers(ja ho vam fer al github repos) on fica als headers el token que pertoquen.
 });
