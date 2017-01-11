@@ -42,15 +42,7 @@ Route::get('/redirect', function () {
 Route::get('/auth/callback', function (Request $request) {
     $http = new GuzzleHttp\Client;
 
-    $response = $http->post('http://localhost:8080/oauth/token', [
-        'form_params' => [
-            'grant_type' => 'authorization_code',
-            'client_id' => '1',
-            'client_secret' => 'fEzXFtvaByxTpotFZkJ9yVAzP58mxMECoEqfAfAX',
-            'redirect_uri' => 'http://oauthclient.dev:8081/auth/callback',
-            'code' => Request::input('code'),
-        ],
-    ]);
+
 
     return json_decode((string) $response->getBody(), true);
     //TODO: get al todosbackend tasks. Li pasem token i agafa el token del json anterior. Agafar tokens desde el headers(ja ho vam fer al github repos) on fica als headers el token que pertoquen.
