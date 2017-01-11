@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/redirect', 'RedirectController@redirectWithQuery')->name('redirect');
+
+Route::get('/auth/callback', 'AuthCallbackController@makeAuthCallback')->name('AuthCallback');
 
 Route::group(['middleware' => 'auth'], function () {
     //    Route::get('/link1', function ()    {
@@ -23,18 +26,6 @@ Route::group(['middleware' => 'auth'], function () {
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
     #adminlte_routes
     Route::get('tasks', 'TasksController@index')->name('tasks');
-
-
-
-});
-
-Route::get('/redirect', 'RedirectController@redirectWithQuery')->name('redirect');
-
-Route::get('/auth/callback', 'AuthCallbackController@makeAuthCallback')->name('AuthCallback');
-
-
-
-
 
     //return json_decode((string) $response->getBody(), true);
     //TODO: get al todosbackend tasks. Li pasem token i agafa el token del json anterior. Agafar tokens desde el headers(ja ho vam fer al github repos) on fica als headers el token que pertoquen.
