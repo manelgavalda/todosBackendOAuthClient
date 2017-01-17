@@ -14,7 +14,36 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/redirect', 'RedirectController@redirectWithQuery')->name('redirect');
+//Route::get('/redirect', 'RedirectController@redirectWithQuery')->name('redirect');
+
+Route::get('/redirect', function () {
+//    if (userHaveToken()) {
+//
+//    } else {
+    $query = http_build_query([
+        'client_id' => '1',
+        'redirect_uri' => 'http://oauthclient.dev:8001/auth/callback',
+        'response_type' => 'code',
+        'scope' => '',
+    ]);
+    return redirect('http://todos.dev:8000/oauth/authorize?'.$query);
+//    }
+});
+
+Route::get('/redirect_implicit', function () {
+//    if (userHaveToken()) {
+//
+//    } else {
+    $query = http_build_query([
+        'client_id' => '1',
+        //És localhost (només una redirecció).
+        'redirect_uri' => 'http://localhost:8002/auth/callback',
+        'response_type' => 'token', //implicit
+        'scope' => '',
+    ]);
+    return redirect('http://todos.dev:8000/oauth/authorize?'.$query);
+//    }
+});
 
 Route::get('/auth/callback', 'AuthCallbackController@makeAuthCallback')->name('AuthCallback');
 
