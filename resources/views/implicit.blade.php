@@ -21,6 +21,12 @@
 		</div>
 	</div>
 	<script>
-		console.log(document.location.hash);
+
+		var extractToken = function(hash) {
+		    var match = hash.match(/access_token=(\w+)/);
+			return !!match && match[1];
+		};
+
+		console.log(extractToken(document.location.hash));
 	</script>
 @endsection
