@@ -35,9 +35,9 @@ Route::get('/redirect_implicit', function () {
 //
 //    } else {
     $query = http_build_query([
-        'client_id' => '1',
+        'client_id' => '3',
         //És localhost (només una redirecció).
-        'redirect_uri' => 'http://localhost:8002/auth/callback',
+        'redirect_uri' => 'http://oauthclient.dev:8001/implicit',
         'response_type' => 'token', //implicit
         'scope' => '',
     ]);
@@ -54,6 +54,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
     #adminlte_routes
+    Route::get('implicit', 'ImplicitController@index')->name('implicit');
+
     Route::get('tasks', 'TasksController@index')->name('tasks');
 
     //return json_decode((string) $response->getBody(), true);
