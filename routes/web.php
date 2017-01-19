@@ -26,7 +26,7 @@ Route::get('/redirect', function () {
         'response_type' => 'code',
         'scope' => '',
     ]);
-    return redirect('http://todos.dev:8000/oauth/authorize?'.$query);
+    return redirect('http://todos.dev:8000/oauth/authorize?' . $query);
 //    }
 });
 
@@ -41,7 +41,7 @@ Route::get('/redirect_implicit', function () {
         'response_type' => 'token', //implicit
         'scope' => '',
     ]);
-    return redirect('http://todos.dev:8000/oauth/authorize?'.$query);
+    return redirect('http://todos.dev:8000/oauth/authorize?' . $query);
 //    }
 });
 

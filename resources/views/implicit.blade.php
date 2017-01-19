@@ -21,8 +21,8 @@
 	<script>
 
 		var extractToken = function(hash) {
-		    var match = hash.match(/access_token=(\w+)/);
-			return !!match && match[1];
+            var match = hash.match(/access_token=(\w+)/);
+            return !!match && match[1];
 		};
 		console.log(extractToken(document.location.hash));
         document.getElementById('token').value = extractToken(document.location.hash);

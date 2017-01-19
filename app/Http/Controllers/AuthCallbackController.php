@@ -30,15 +30,15 @@ class AuthCallbackController extends Controller
             ],
         ]);
 
-        $json = json_decode((string) $response->getBody(), true);
+        $json = json_decode((string)$response->getBody(), true);
         $access_token = $json['access_token'];
 
         $response2 = $http->get('http://todos.dev:8000/api/v1/task', [
             'headers' => [
                 'X-Requested-With' => 'XMLHttpRequest',
-                'Authorization' => "Bearer ".$access_token
+                'Authorization' => "Bearer " . $access_token
             ],
         ]);
-        return $json2 = json_decode((string) $response2->getBody(), true);
+        return $json2 = json_decode((string)$response2->getBody(), true);
     }
 }
