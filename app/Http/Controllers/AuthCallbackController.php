@@ -24,7 +24,8 @@ class AuthCallbackController extends Controller
             'form_params' => [
                 'grant_type' => 'authorization_code',
                 'client_id' => '1',
-                'client_secret' => 'AtuhErSrAIzzktbDER2rbLvNAa1xNhxe6JoEjaIO',
+//                'client_secret' => 'AtuhErSrAIzzktbDER2rbLvNAa1xNhxe6JoEjaIO',
+                'client_secret' => 'mUnAkePb1AJrSfuvtXZ0H9A2uNWqDoh4eLRTMlUY',
                 'redirect_uri' => 'http://oauthclient.dev:8001/auth/callback',
                 'code' => Request::input('code'),
             ],
